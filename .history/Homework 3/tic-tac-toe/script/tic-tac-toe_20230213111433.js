@@ -1,7 +1,7 @@
 const statusDisplay = document.querySelector('.status');
 
 let gameActive = true;
-let currentPlayer = Math.floor(Math.random()) < 0.5 ? "X" : "O"; //randomly chooses who goes first
+let currentPlayer = "X";
 let gameState = ["", "", "", "", "", "", "", "", ""];
 
 const winningMessage = () => `Player ${currentPlayer} has won!`;
@@ -35,35 +35,27 @@ function handlePlayerChange() {
 /*This function has the responsibility of scanning to see which move is optimized
 for the computer to proceed with*/
 function handleResultValidation() {
-    checkWin();
-    if (gameActive) {
-        handlePlayerChange();
-        handleComputerMove();
-    }
-}
-
-function checkWin(); {
-    let roundWon = false;
+    /*
+    let roundWon = false
     for (let i = 0; i <= 7; i++) {
         const winCondition = winningConditions[i];
         let a = gameState[winCondition[0]];
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
         if (a === '' || b === '' || c === '') {
-            continue;
+        continue;
         }
         if (a === b && b === c) {
-            roundWon = true;
-            break
+        roundWon = true;
+        break
         }
-    }
-
-
-
-
-    function handleComputerMove() {
-        pickMove();
-        checkWin();
+        
+    }*/
+    checkWin(); {
+        if (gameActive) {
+            handlePlayerChange();
+        }
+        handleComputerMove();
     }
 
     if (roundWon) {
@@ -72,39 +64,38 @@ function checkWin(); {
         statusDisplay.style.color = "rgb(251,100,204)";
         return;
     }
-}
 
 
-function handleComputerPlay() {
-    pickMove();
-    handleResultValidation();
-}
-//
-function pickMove() {
-    while (true) {
-        var move = Math.floor(Math.random() * 8);
-        if (gameState[move] === "") {
-            break;
+
+
+
+    function handleComputerPlay() {
+        pickMove();
+        handleResultValidation();
+    }
+    //
+    function pickCompMove() {
+        while (true) {
+            var move = Math.floor(Math.random() * 8);
+            if (gameState[move] === "") {
+                break;
+            }
         }
-    }
 
-    //code that checks to see if the cell is empty/a valid move
-    if (gameState[clickedCellIndex] !== "" || !gameActive) {
-        return;
+        //code that checks to see if the cell is empty/a valid move
+        if (gameState[clickedCellIndex] !== "" || !gameActive) {
+            return;
+        }
+        gameState[move] = currentPlayer;
+        document.getElementById(move).innerHTML = currentPlayer;
+        //querySelector(".cell").getAttribute(move).value = currentPlayer;
     }
-    gameState[move] = currentPlayer;
-    document.getElementById(move).innerHTML = currentPlayer;
-    //querySelector(".cell").getAttribute(move).value = currentPlayer;
 }
-
 
 function handleCellClick(clickedCellEvent) {
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
-    //checks to see if current cell is empty and if the game is still active
-    if (gameState[clickedCellIndex] !== "" || !gameActive) {
-        return;
-    }
+
 
     handleCellPlayed(clickedCell, clickedCellIndex);
     handleResultValidation();
@@ -121,4 +112,4 @@ function handleRestartGame() {
 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
 document.querySelector('.restart').addEventListener('click', handleRestartGame);
-
+}
