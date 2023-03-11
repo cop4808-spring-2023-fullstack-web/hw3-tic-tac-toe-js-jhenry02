@@ -3,7 +3,7 @@
     {
       "name": "See if comments exist",
       "setup": "",
-      "run": "git grep \"//\" ./script",
+      "run": "git grep \"//\" *.js",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -13,7 +13,7 @@
     {
       "name": "Model used for and while loops",
       "setup": "",
-      "run": "git grep -E \"for|while\" ./script",
+      "run": "git grep -E \"for|while\" *.js",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -23,7 +23,7 @@
     {
       "name": "Model 1D array with game state",
       "setup": "",
-      "run": "git grep \"let gameState\" ./script",
+      "run": "git grep \"let gameState\" *.js",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -33,7 +33,7 @@
     {
       "name": "Model 2D array that stores list of winning conditions",
       "setup": "",
-      "run": "git grep \"const winningConditions\" ./script",
+      "run": "git grep \"const winningConditions\" *.js",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -43,7 +43,7 @@
     {
       "name": "Control featured logging to console to trace game",
       "setup": "",
-      "run": "git grep \"console.log\" ./script",
+      "run": "git grep \"console.log\" *.js",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -63,7 +63,7 @@
     {
       "name": "Randomly Pick who starts Human being X and Computer being O",
       "setup": "",
-      "run": "git grep \"random\" ./script",
+      "run": "git grep \"random\" *.js",
       "input": "",
       "output": "",
       "comparison": "included",
